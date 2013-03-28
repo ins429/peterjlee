@@ -3,11 +3,47 @@
 <head>
 	<meta charset="utf-8">
 	<title>peterlee</title>
+	<script src="js/moment.min.js" type="text/javascript"></script>
 	<script>
+		window.addEventListener( 'DOMContentLoaded', init, false );
+		var random = function(){
+			return Math.floor(Math.random() * (16));
+		}
+		var colors = ['#3fbf9d','#202020','#7AC0E4','#FF83FA','#8968CD','#3366cc','#A2B5CD','#00CC99','#00F5FF','#96CDCD','#20B2AA','#FFEC8B','#FF8C00','#7171C6','#F66'];
+
+		function init(){
+			var s = document.getElementById('s'),
+					n = document.getElementById('n');
+					l = document.getElementsByClassName('l'),
+					st = moment('2012-05-12 23:00 -5000').utc(),
+					tn = moment().utc();
+
+			s.style.color = colors[random()];
+			s.appendChild( document.createTextNode(st.format('LLLL')) );
+			n.style.color = colors[random()];
+			n.appendChild( document.createTextNode(tn.format('LLLL')) );
+			d.style.color = colors[random()];
+			d.appendChild( document.createTextNode( tn.diff(st, 'days') ) );
+			for(var j=0;j<l.length;j++){
+				l[j].style.color = colors[random()];
+				console.log(random());
+				console.log(l[j]);
+			};
+		}
 	</script>
+	<style>
+		span{display:block;}
+	</style>
 </head>
 
 <body>
-	days
+	<span class="l">Start</span>
+	<span id="s"></span>
+	<br />
+	<span class="l">Now</span>
+	<span id="n"></span>
+	<br />
+	<span class="l">Days</span>
+	<span id="d"></span>
 </body>
 </html>
