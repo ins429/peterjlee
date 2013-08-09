@@ -20,7 +20,7 @@
   Physijs.scripts.ammo = 'ammo.js';
 
   var initScene, render, createShape,
-    renderer, render_stats, physics_stats, scene, light, ground, ground_material, camera;
+    renderer, render_stats, physics_stats, scene, light, ground, ground_material, camera, ball, ballXpos, ballYpos, ballZpos;
 
   initScene = function() {
     TWEEN.start();
@@ -139,6 +139,16 @@
   };
 
   render = function() {
+    if (ball) {
+      console.log(ballXpos + ' --- ' + ball.position.x);
+      if (parseInt(ballXpos * 10) > parseInt(ball.position.x * 10)) {
+        ball.position.x += 0.1;
+        console.log(ballXpos + ' ::: ' + ball.position.x);
+      } else if (parseInt(ballXpos * 10) > parseInt(ball.position.x * 10)) {
+        console.log('no');
+        ball.position.x -= 0.1;
+      }
+    }
     requestAnimationFrame( render );
     renderer.render( scene, camera );
     render_stats.update();
@@ -205,16 +215,17 @@
       // fire(shape, Math.random() * 30 - 15, 20, Math.random() * 30 - 15);
       var move = document.getElementById( 'move' );
       move.addEventListener( 'click', function() {
-        fire(shape, Math.random() * 30 - 15, 20, Math.random() * 30 - 15);
+        ball = shape;
+        shape.__dirtyPosition = true;
+        shape.__dirtyRotation = true;
+        fire(10, 10, 10);
       });
     };
 
-    fire = function(el, x, y, z) {
-      console.log('FIRE');
-      el.position.x = x;
-      el.position.y = y;
-      el.position.z = z;
-      console.log(el.position);
+    fire = function(x, y, z) {
+      ballXpos = x;
+      ballYpos = y;
+      ballZpos = z;
     };
   })();
 
