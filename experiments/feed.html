@@ -1,0 +1,297 @@
+<html>
+<head>
+  <title>feed me</title>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <style type="text/css">
+    body {
+      font-family: 'Helvetica Neue';
+      background: #fff;
+    }
+    .clear {
+      clear: both;
+    }
+    .float-right {
+      float: right;
+    }
+    .float-left {
+      float: left;
+    }
+    .feed {
+      width: 460px;
+      padding: 10px;
+      margin: 10px auto;
+      -webkit-border-radius: 8px;
+      -moz-border-radius: 8px;
+      -ms-border-radius: 8px;
+      -o-border-radius: 8px;
+      border-radius: 8px;
+      border: 1px solid #999;
+      padding-bottom: 1.5em;
+      background-color: #fff;
+    }
+    .feed .thumbnail {
+      margin: 5px 10px 5px 5px;
+    }
+    .feed h3 {
+      font-weight: 100;
+      font-size: 18px;
+      color: #007aff;
+      margin: 10px;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .feed .feed-content {
+      display: none;
+      font-weight: 300;
+    }
+    .feed .published-info {
+      margin: 5px 0;
+      font-weight: 300;
+      font-size: 14px;
+      font-style: italic;
+    }
+    .media {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      height: auto;
+      margin-left: -225px;
+      margin-top: -175px;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 5px;
+      z-index: 10;
+      box-shadow: 0 0 0 9999px rgba(0,0,0,0.5);
+    }
+    .media > video {
+      display: block;
+      margin: 0 auto;
+    }
+    .button {
+      font-size: 16px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+      border: none;
+      outline: none;
+      font: inherit;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+      color: #007aff;
+      background: #fff;
+      font-weight: 300;
+      font-size: 16px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      border-radius: 5px;
+      padding: 7px 12px 7px 12px;
+      border: 1px solid #007aff;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #007aff;
+      color: #fff;
+      text-decoration: none;
+    }
+    .button.green {
+      border: 1px solid #4dd865;
+      color: #4dd865;
+    }
+    .button.green:hover {
+      background: #4dd865;
+      color: #fff;
+      text-decoration: none;
+    }
+    .button.red {
+      border: 1px solid #ff3b30;
+      color: #ff3b30;
+    }
+    .button.red:hover {
+      background: #ff3b30;
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <section id="feed-container"></section>
+  <script type="text/javascript">
+    google.load('feeds', '1');
+    google.setOnLoadCallback(initialize);
+
+    function initialize() {
+      var feed = new google.feeds.Feed('http://feeds.feedburner.com/tedtalks_video');
+      feed.load(function(result) {
+        if (!result.error) {
+          var container = document.getElementById('feed-container');
+          for (var i = 0; i < result.feed.entries.length; i++) {
+            var entry = result.feed.entries[i];
+
+            // intialize Feed
+            var f = new Feed(entry);
+
+            // add Feed view to container
+            container.appendChild(f.view());
+          }
+        }
+      });
+    }
+
+    // feed object
+    function Feed(entry) {
+      this.author = entry.author;
+      this.categories = entry.categories;
+      this.content = entry.content;
+      this.contentSnippet = entry.contentSnippet;
+      this.link = entry.link;
+      if (entry.mediaGroups && entry.mediaGroups[0] && entry.mediaGroups[0].contents && entry.mediaGroups[0].contents[0])
+        this.media = entry.mediaGroups[0].contents[0];
+      this.publishedDate = entry.publishedDate;
+      this.title = entry.title;
+    }
+
+    // generate feed view
+    Feed.prototype.view = function() {
+      var self = this,
+        feedDiv = document.createElement('div'),
+        thumbnailDiv = document.createElement('div'),
+        thumbnail = document.createElement('img'),
+        title = document.createElement('h3'),
+        contentDiv = document.createElement('div'),
+        playVideoButton = document.createElement('button'),
+        publishedDateDiv = document.createElement('div'),
+        linkToOriginal = document.createElement('a');
+
+      feedDiv.classList.add('feed');
+
+      // thumbnail
+      thumbnail.setAttribute('src', self.media.thumbnails[0].url);
+      thumbnail.setAttribute('width', 70);
+      thumbnail.setAttribute('height', 70);
+      thumbnailDiv.classList.add('thumbnail');
+      thumbnailDiv.classList.add('float-left');
+      thumbnailDiv.appendChild(thumbnail);
+      feedDiv.appendChild(thumbnailDiv);
+
+      // title
+      title.classList.add('feed-title');
+      title.appendChild(document.createTextNode(self.title));
+      feedDiv.appendChild(title);
+
+      feedDiv.appendChild(makeClear());
+
+      // content
+      // not sure why the content includes <img> tag, so putting it as innerHtml
+      contentDiv.classList.add('feed-content');
+      contentDiv.innerHTML = self.content;
+      feedDiv.appendChild(contentDiv);
+
+      contentDiv.appendChild(makeClear());
+
+      // add published date time stamp
+      publishedDateDiv.classList.add('published-info');
+      publishedDateDiv.appendChild(makeP('by ' + self.author + ' on ' + self.publishedDate));
+      contentDiv.appendChild(publishedDateDiv);
+
+      // link to original post
+      linkToOriginal.classList.add('button');
+      linkToOriginal.classList.add('float-right');
+      linkToOriginal.setAttribute('href', self.link);
+      linkToOriginal.setAttribute('target', '_blank');
+      linkToOriginal.appendChild(document.createTextNode('Link to the original post'));
+      contentDiv.appendChild(linkToOriginal);
+
+      // play video button
+      playVideoButton.classList.add('button');
+      playVideoButton.classList.add('green');
+      playVideoButton.innerHTML = 'Play Video';
+      contentDiv.appendChild(playVideoButton);
+
+      // add event listener for play video button
+      playVideoButton.addEventListener('click', function() {
+        self.playMedia(self.media)
+      });
+
+      // expand details
+      title.addEventListener('click', function() {
+        var display = (contentDiv.style.display === 'none' || contentDiv.style.display === '') ? 'block' : 'none';
+        contentDiv.style.display = display;
+      });
+      return feedDiv;
+    }
+
+    // build modal and embed video
+    Feed.prototype.playMedia = function(media) {
+      // if it's opened, don't do anything
+      if (document.querySelector('.media'))
+        return;
+
+      var mediaContainer = document.createElement('div'),
+        video = document.createElement('video'),
+        source = document.createElement('source'),
+        br = document.createElement('br'),
+        closeButton = document.createElement('button');
+
+      // video
+      video.setAttribute('width', 320);
+      video.setAttribute('height', 240);
+      video.setAttribute('controls');
+      video.appendChild(source);
+
+      // video source
+      source.setAttribute('src', media.url);
+      source.setAttribute('type', media.type);
+      mediaContainer.appendChild(video);
+      mediaContainer.appendChild(br);
+
+      // close button
+      closeButton.classList.add('button');
+      closeButton.classList.add('red');
+      closeButton.classList.add('float-right');
+      closeButton.innerHTML = 'Close';
+      mediaContainer.appendChild(closeButton);
+
+      mediaContainer.classList.add('media');
+
+      document.body.appendChild(mediaContainer);
+
+      // close modal
+      closeButton.addEventListener('click', function() {
+        removeElement(mediaContainer)
+      });
+    }
+
+    // remove element helper
+    function removeElement(el) {
+      el.parentNode.removeChild(el);
+    }
+
+    // make <p> with textnode
+    function makeP(text) {
+      var p = document.createElement('p');
+      p.appendChild(document.createTextNode(text));
+
+      return p;
+    }
+
+    // generate a div to clear floats
+    function makeClear() {
+      var clear = document.createElement('div');
+      clear.classList.add('clear');
+
+      return clear;
+    }
+  </script>
+</body>
+</html>
