@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>title goes here..</title>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Architects+Daughter);
+
+      body {
+        background: url(http://subtlepatterns.subtlepatterns.netdna-cdn.com/patterns/retina_wood.png);
+        text-align:center; 
+      }
+
+      h2 {
+        margin:0;
+        padding:0;
+        font-family: 'Architects Daughter', cursive;
+        text-shadow:#ffffff 0px 2px 0px;
+        -webkit-transform: rotate(1.5deg);
+        -moz-transform: rotate(1.5deg);
+        transform: rotate(1.5deg);
+        font-size: 20px;
+      }
+
+      .polaroid {
+        position: relative;
+        background-color:#fff;
+        width:300px;
+        margin:10px 0 10px 0;
+        padding:10px;  
+        border-top:1px solid #eee;
+        box-shadow: 0 1px 3px rgba(34,25,25,0.4); 
+        -moz-box-shadow: 0 1px 2px rgba(34,25,25,0.4); 
+        -webkit-box-shadow: 0 1px 3px rgba(34,25,25,0.4);
+      }
+
+      .polaroid img {
+        width: 100%;
+      }
+
+      .description {
+        padding:5px 0 5px 0;
+        width:100%;
+        color: #333;
+      }
+
+      .fixed {
+        position: fixed;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="scene1" class="fixed" data-0="transform:rotate(0deg);top:100%;left:50%;margin-left:-160px;" data-500="transform:rotate(360deg);top:0%;" data-1000="" data-1500="top:-100%;">
+      <div class="polaroid"> 
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>1</h2>
+        </div>      
+      </div>
+    </section>
+    <section id="scene2" class="fixed" data-1000="transform:scale(0) rotate(0deg);left:50%;margin-left:-160px;" data-1500="transform:scale(1) rotate(1440deg);opacity:1;" data-2100="" data-2200="transform:scale(5) rotate(3240deg);opacity:0;">
+      <div class="polaroid"> 
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>2</h2>
+        </div>      
+      </div>
+    </section>
+    <section id="scene3" class="fixed">
+      <div class="polaroid fixed" data-0="display:none;z-index:301;" data-2200="display:block;left:100%;transform:rotate(-1deg);" data-3000="left:50%;margin-left:-160px;" data-5400="" data-6000="left[cubic]:150%;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>3-1</h2>
+        </div>      
+      </div>
+      <div class="polaroid fixed" data-0="display:none;z-index:302;" data-2200="display:block;right:100%;transform:rotate(1deg);" data-3000="right:50%;margin-right:-160px;" data-4800="" data-5400="right[cubic]:150%;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>3-2</h2>
+        </div>      
+      </div>
+      <div class="polaroid fixed" data-0="display:none;z-index:303;" data-2200="display:block;top:25%;left:100%;transform:rotate(-20deg);" data-3000="left:50%;top:0%;margin-left:-160px;transform:rotate(-2deg);" data-4200="" data-4800="left[cubic]:150%;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>3-3</h2>
+        </div>      
+      </div>
+      <div class="polaroid fixed" data-0="display:none;z-index:304;" data-2200="display:block;top:25%;right:100%;transform:rotate(20deg);" data-3000="right:50%;top:0%;margin-right:-160px;transform:rotate(2deg);" data-3600="" data-4200="right[cubic]:150%;"> 
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>3-4</h2>
+        </div>      
+      </div>
+    </section>
+    <script src="js/skrollr.min.js"></script>
+    <script type="text/javascript">
+      var s = skrollr.init();
+    </script>
+  </body>
+</html>
