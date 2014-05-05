@@ -13,6 +13,12 @@
         text-align: center; 
       }
 
+      .scene {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+      }
+
       h2 {
         margin: 0;
         padding: 0;
@@ -48,7 +54,7 @@
     </style>
   </head>
   <body>
-    <section id="scene0" data-0="top:10%;left:50%;margin-left:-155px;" data-500="top:-100%;">
+    <section id="scene0" class="scene" data-0="top:10%;left:50%;margin-left:-155px;" data-500="top:-100%;">
       <div class="polaroid"> 
         <img src="http://lorempixel.com/359/320" />
         <div class="description">
@@ -56,42 +62,81 @@
         </div>      
       </div>
     </section>
-    <section id="scene1" data-0="transform:rotate(0deg);top:100%;left:50%;margin-left:-155px;" data-500="transform:rotate(360deg);top:10%;" data-1000="" data-1500="top:-100%;">
-      <div class="polaroid"> 
+    <!-- starts at 500 -->
+    <section id="scene1" class="scene" data-0="">
+      <div id="scene1-1" class="polaroid" data-0="transform:rotate(0deg);top:100%;left:50%;margin-left:-155px;margin-top:0px;z-index:101;" data-500="transform:rotate(360deg);top:10%;" data-2200="" data-2300="top:-100%;">
         <img src="http://lorempixel.com/359/320" />
         <div class="description">
-          <h2>1</h2>
+          <h2>1-1</h2>
+        </div>      
+      </div>
+      <div id="scene1-2" class="polaroid" data-0="transform:rotate(0deg);top:100%;left:50%;margin-left:-155px;margin-top:3px;z-index:102;" data-500="transform:rotate(360deg);top:10%;" data-1800="" data-1900="top:-100%;" data-2000="top:10%;z-index:12;" data-2200="" data-2300="top:-100%;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>1-2</h2>
+        </div>      
+      </div>
+      <div id="scene1-3" class="polaroid" data-0="transform:rotate(0deg);top:100%;left:50%;margin-left:-155px;margin-top:6px;z-index:102;" data-500="transform:rotate(360deg);top:10%;" data-1400="" data-1500="top:-100%;" data-1600="top:10%;z-index:11;" data-2200="" data-2300="top:-100%;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>1-3</h2>
+        </div>      
+      </div>
+      <div id="scene1-4" class="polaroid" data-0="transform:rotate(0deg);top:100%;left:50%;margin-left:-155px;margin-top:9px;z-index:103;" data-500="transform:rotate(360deg);top:10%;" data-1000="" data-1100="top:-100%;" data-1200="top:10%;z-index:10;" data-2200="" data-2300="top:-100%;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>1-4</h2>
         </div>      
       </div>
     </section>
-    <section id="scene2" data-1000="transform:scale(0) rotate(0deg);top:10%;left:50%;margin-left:-155px;" data-1500="transform:scale(1) rotate(1440deg);opacity:1;" data-2100="" data-2200="transform:scale(5) rotate(3240deg);opacity:0;">
-      <div class="polaroid"> 
+    <!-- starts at 2200 -->
+    <section id="scene2" class="scene" data-0="">
+      <div class="polaroid" data-2200="transform:scale(0) rotate(-1deg);top:10%;left:50%;margin-left:-155px;z-index:201;" data-2700="transform:scale(1) rotate(1438deg);opacity:1;" data-4100="" data-4200="transform:scale(5) rotate(3240deg);opacity:0;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>2</h2>
+        </div>      
+      </div>
+      <div class="polaroid" data-2200="transform:scale(0) rotate(-2deg);top:10%;left:50%;margin-left:-155px;z-index:202;" data-2700="transform:scale(1) rotate(1439deg);opacity:1;" data-3800="" data-3900="transform:scale(5) rotate(3240deg);opacity:0;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>2</h2>
+        </div>      
+      </div>
+      <div class="polaroid" data-2200="transform:scale(0) rotate(1deg);top:10%;left:50%;margin-left:-155px;z-index:203;" data-2700="transform:scale(1) rotate(1440deg);opacity:1;" data-3600="" data-3700="transform:scale(5) rotate(3240deg);opacity:0;">
+        <img src="http://lorempixel.com/359/320" />
+        <div class="description">
+          <h2>2</h2>
+        </div>      
+      </div>
+      <div class="polaroid" data-2200="transform:scale(0) rotate(2deg);top:10%;left:50%;margin-left:-155px;z-index:204;" data-2700="transform:scale(1) rotate(1441deg);opacity:1;" data-3300="" data-3400="transform:scale(5) rotate(3240deg);opacity:0;">
         <img src="http://lorempixel.com/359/320" />
         <div class="description">
           <h2>2</h2>
         </div>      
       </div>
     </section>
-    <section id="scene3" data-0="display=block;width:100%;height:100%;">
-      <div class="polaroid fixed" data-0="display:none;z-index:301;" data-2200="display:block;top:-15%;left:120%;transform:rotate(80deg);" data-3000="left:50%;top:10%;margin-left:-155px;transform:rotate(-1deg)" data-4500="" data-4800="left[cubic]:150%;">
+    <!-- starts at 4200 -->
+    <section id="scene3" class="scene" data-0="display=block;width:100%;height:100%;">
+      <div id="scene3-1" class="polaroid" data-0="display:none;z-index:301;" data-4200="display:block;top:-15%;left:120%;transform:rotate(80deg);" data-5000="left:50%;top:10%;margin-left:-155px;transform:rotate(-1deg)" data-6000="" data-6300="left[cubic]:150%;">
         <img src="http://lorempixel.com/359/320" />
         <div class="description">
           <h2>3-1</h2>
         </div>      
       </div>
-      <div class="polaroid fixed" data-0="display:none;z-index:302;" data-2200="display:block;top:-15%;right:120%;transform:rotate(-100deg);" data-3000="right:50%;top:10%;margin-right:-155px;transform:rotate(1deg)" data-4200="" data-4500="right[cubic]:150%;">
+      <div id="scene3-2" class="polaroid" data-0="display:none;z-index:302;" data-4200="display:block;top:-15%;right:120%;transform:rotate(-100deg);" data-5000="right:50%;top:10%;margin-right:-155px;transform:rotate(1deg)" data-5700="" data-6000="right[cubic]:150%;">
         <img src="http://lorempixel.com/359/320" />
         <div class="description">
           <h2>3-2</h2>
         </div>      
       </div>
-      <div class="polaroid fixed" data-0="display:none;z-index:303;" data-2200="display:block;top:25%;left:120%;transform:rotate(-80deg);" data-3000="left:50%;top:10%;margin-left:-155px;transform:rotate(-2deg);" data-3900="" data-4200="left[cubic]:150%;">
+      <div id="scene3-3" class="polaroid" data-0="display:none;z-index:303;" data-4200="display:block;top:25%;left:120%;transform:rotate(-80deg);" data-5000="left:50%;top:10%;margin-left:-155px;transform:rotate(-2deg);" data-5400="" data-5700="left[cubic]:150%;">
         <img src="http://lorempixel.com/359/320" />
         <div class="description">
           <h2>3-3</h2>
         </div>      
       </div>
-      <div class="polaroid fixed" data-0="display:none;z-index:304;" data-2200="display:block;top:25%;right:120%;transform:rotate(80deg);" data-3000="right:50%;top:10%;margin-right:-155px;transform:rotate(2deg);" data-3600="" data-3900="right[cubic]:150%;"> 
+      <div id="scene3-4" class="polaroid" data-0="display:none;z-index:304;" data-4200="display:block;top:25%;right:120%;transform:rotate(80deg);" data-5000="right:50%;top:10%;margin-right:-155px;transform:rotate(2deg);" data-5100="" data-5400="right[cubic]:150%;"> 
         <img src="http://lorempixel.com/359/320" />
         <div class="description">
           <h2>3-4</h2>
